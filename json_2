@@ -1,0 +1,23 @@
+{
+    "?xml": {
+        "@version": "1.0",
+        "@encoding": "utf-8"
+    },
+    "root": {
+        "@id": "1",
+        "uri": {
+            "#cdata-section": "http://api.bart.gov/api/etd.aspx?cmd=etd&orig=12th&json=y"
+        },
+        "date": "02/26/2020",
+        "time": "01:12:45 AM PST",
+        "station": [
+            {
+                "name": "12th St. Oakland City Center",
+                "abbr": "12TH"
+            }
+        ],
+        "message": {
+            "warning": "No data matched your criteria."
+        }
+    }
+}

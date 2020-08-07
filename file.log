@@ -1,0 +1,5 @@
+[telnet]
+telnet_ip=1
+telnet_port=2
+[logs]
+full=true

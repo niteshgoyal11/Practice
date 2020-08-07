@@ -1,0 +1,500 @@
+EVSE dev evcc2.c --> ASCII
+sudo /usr/local/bin/telnet-ssl.sh 10.40.1.172
+vi /etc/udev/rules.d/99-usb-serial.rules
+KERNEL=="ttyUSB*", ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", ATTRS{busnum}=="2", SYMLINK+="meter"
+
+[02][10][00][0B][00][01][02][00][80] [B2][7B]
+2-   16-  0-  11-0-  1-   2-  0- 128-178-123-2-3-0-4-0-1-197-248
+set_values_evcc 1 evcc 1 321 16636
+set_values_evcc 1 evcc 8 61
+set_values_evcc 1 evcc 4 1185
+set_values_evcc 1 evcc 6 1538 49168
+set_values_evcc 1 evcc 13 3328 4
+set_values_evcc 1 evcc 46 11937 33101 1000 1000 1000
+set_values_evcc 1 evcc 15 3840 0000 1000 0000 0000
+
+
+
+set_values 1 test 770 1 3
+set_values 1 test 770 1 3
+set_values 1 test 20480 49 56 56 49 50 56 65
+set_values 1 test 0 2124
+set_values 1 test 2 2124
+set_values 1 test 4 2124
+set_values 1 test 6 4000
+set_values 1 test 8 4000
+set_values 1 test 10 4000
+set_values 1 test 12 1833
+set_values 1 test 14 1833
+set_values 1 test 16 1833
+set_values 1 test 18 3894
+set_values 1 test 24 3894
+set_values 1 test 30 65507 65535
+set_values 1 test 36 2124
+set_values 1 test 38 4000
+set_values 1 test 1024 0
+set_values 1 test 1026 100
+set_values 1 test 40 990
+
+
+set_values_evcc 2 evcc_2 1 321 16636
+set_values_evcc 2 evcc_2 8 61
+set_values_evcc 2 evcc_2 4 1185
+set_values_evcc 2 evcc_2 6 1538 49168
+set_values_evcc 2 evcc_2 13 3328 4
+set_values_evcc 2 evcc_2 46 11937 33101 1000 1000 1000
+set_values_evcc 2 evcc_2 15 3840 0000 1000 0000 0000
+
+set_values_meter 2 meter_2 770 1 3
+set_values_meter 2 meter_2 20480 49 56 56 49 50 56 65
+set_values_meter 2 meter_2 0 2124
+set_values_meter 2 meter_2 2 2124
+set_values_meter 2 meter_2 4 2124
+set_values_meter 2 meter_2 6 4000
+set_values_meter 2 meter_2 8 4000
+set_values_meter 2 meter_2 10 4000
+set_values_meter 2 meter_2 12 1833
+set_values_meter 2 meter_2 14 1833
+set_values_meter 2 meter_2 16 1833
+set_values_meter 2 meter_2 18 3894
+set_values_meter 2 meter_2 24 3894
+set_values_meter 2 meter_2 30 65507 65535
+set_values_meter 2 meter_2 36 2124
+set_values_meter 2 meter_2 38 4000
+set_values_meter 2 meter_2 1024 0
+set_values_meter 2 meter_2 1026 100
+set_values_meter 2 meter_2 40 990
+
+
+sid:24 V:212.399994V I:1.833000A P:819.000000W E:0.000000Wh T:-273.000000C
+
+sid:287 v:212500 i:1860 p:395 e:0 init:11400 evid:000000000000
+4294967295
+
+set_values_evcc 2 evcc_2 4 1248
+
+
+
+set_values_evcc 2 evcc_2 4 1185
+
+
+set_values_evcc 1 evcc 4 1248
+set_values_evcc 1 evcc 4 1185
+
+
+set_values_evcc 2 evcc_2 4 1201
+set_values_evcc 2 evcc_2 4 1202
+set_values_evcc 2 evcc_2 4 1218
+set_values_evcc 2 evcc_2 45 11970 516 1000 1000 1000
+
+
+set_values_evcc 1 evcc 4 1201
+set_values_evcc 1 evcc 4 1202
+set_values_evcc 1 evcc 4 1218
+set_values_evcc 1 evcc 46 11970 33101 1000 1000 1000
+
+
+
+set_values_evcc 1 evcc 4 1218
+
+get_values_evcc 1 evcc 11 1
+get_values_evcc 1 evcc 12 1
+
+
+get_values_evcc 2 evcc_2 8 1
+get_values_evcc 2 evcc_2 5 1
+get_values_evcc 2 evcc_2 12 1
+get_values_evcc 2 evcc_2 20 1
+get_values_evcc 1 evcc 8 1
+get_values_evcc 1 evcc 5 1
+
+
+
+
+set_values_evcc 1 evcc 4 1248
+
+import cphm_modbus
+obj = cphm_modbus.CP_modbus_sim()
+obj.set_slave("meter", 1,"meter", 1, "11")
+
+
+set_values 1 test 0 17750 21317 1 2
+set_values 1 test 12 67 18497 21063 17744
+set_values 1 test 47 12848 12599 11825
+set_values 1 0 0 17750 21317
+set_values 1 test 0 1 257 16500 768
+set_values 1 0 2
+set_values 1 0 3
+add_slave 2
+add_block 2 "1" cst.HOLDING_REGISTERS, 0, 4000
+set_values 2 1 0 0 1 257 16500 768
+set_values 3 0 0 1 257 16500 768
+set_values 4 0 0 1 257 16500 768
+set_values 5 0 0 1 257 16500 768
+set_values 1 0 0 1 257 16500 768
+get_values 1 0 1 2
+
+
+cat /data/ota/otaTransCntxt
+set_values_meter 1 meter 1026 150
+
+
+set_values_meter 1 meter 52 12400
+set_values_meter 1 meter 64 12400
+set_values_meter 1 meter 40 9192
+
+
+set_values_evcc 1 evcc 4 249
+set_values_evcc 2 evcc_2 4 249
+
+root@sudhir-VirtualBox:/home/sudhir/modbus_sim# pkill -9 python
+root@sudhir-VirtualBox:/home/sudhir/modbus_sim# nohup python app.py &
+[3] 8294
+[2]   Killed                  nohup python app.py
+root@sudhir-VirtualBox:/home/sudhir/modbus_sim# nohup: ignoring input and appending output to 'nohup.out'
+INFO:pymodbus:Initializing MODBUS simulator data store...
+
+
+set_values 1 test 1 321 16636
+
+128-0-248-0-0-0-0-120-0-0-120-128
+
+000-1-000-0-0-6-1-003-0-100-0-3
+0-1-0-0-0-6-2-3-0-100-0-3
+
+
+It seems the slave responds with "81 04" to every request being read.
+Is this an inner Modbus PDU frame: 81 means that the server is sending an exception response back upon reception of a Modbus request with a function code 01 (Read Coils), and 04 is the actual exception code "server device failure"?
+
+
+
+[3A][30][31][30][33][30][30][30][31][30][30][30][32][46][39][0D][0A]
+
+sevt -g RFID -m 87 -o 0 -l 0x00000008000007E053AD011A00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010601000000000000000000000000000000000000000000000000
+
+
+curl -v -d "datatorecv=sslvl|1|10062|`cat /var/config/system_mac|sed s/://g`|1309853102|0|1|1|PILOT|W|sslvl" http://127.0.0.1:55555/usr/bin/getsrvr
+
+
+tail -F /var/log/messages| grep -I provmgr &
+
+tail -F /var/log/messages| grep -I otamgr &
+
+niteshgoyal11
+Dy8c2w
+
+curl -v -d "datatorecv=scfg|1|10006|`cat /var/config/system_mac|sed s/://g`|1572514878|0|1|35161|jc:1|scfg" http://127.0.0.1:55555/usr/bin/getsrvr
+
+curl -v -d “datatorecv=dibres|1|6501|0024B1000002C5FE|1573538542|1|1|52592765|455|1|0000000001025B33,urn:nema:5evse:dn:v1:chargepoint.com:cdid:cns00007e504|emb_eu_1:7_2|1510|dibres” http://127.0.0.1:55555/usr/bin/getsrvr
+
+curl -v -d "datatorecv=dibntfy|1|6533|0024B10000022C19|1572514878|1|1|35161|4|dibntfy" http://127.0.0.1:55555/usr/bin/getsrvr
+curl -v -d "datatorecv=sslvl|1|10062|`cat /var/config/system_mac|sed s/://g`|1309853102|0|1|1|CPSRELAY|D|sslvl" http://127.0.0.1:55555/usr/bin/getsrvr
+curl -v -d "datatorecv=sslvl|1|10062|`cat /var/config/system_mac|sed s/://g`|1309853102|0|1|1|MCP|D|sslvl" http://127.0.0.1:55555/usr/bin/getsrvr
+curl -v -d "datatorecv=sslvl|1|10062|`cat /var/config/system_mac|sed s/://g`|1309853102|0|1|1|DISPLAY|D|sslvl" http://127.0.0.1:55555/usr/bin/getsrvr
+curl -v -d "datatorecv=sslvl|1|10062|`cat /var/config/system_mac|sed s/://g`|1309853102|0|1|1|SYSTEM|D|sslvl" http://127.0.0.1:55555/usr/bin/getsrvr
+curl -v -d "datatorecv=sslvl|1|10062|`cat /var/config/system_mac|sed s/://g`|1309853102|0|1|1|THERMALMGMT|D|sslvl" http://127.0.0.1:55555/usr/bin/getsrvr
+curl -v -d "datatorecv=sslvl|1|10062|`cat /var/config/system_mac|sed s/://g`|1309853102|0|1|1|DISPMGR|D|sslvl" http://127.0.0.1:55555/usr/bin/getsrvr
+curl -v -d "datatorecv=sslvl|1|10062|`cat /var/config/system_mac|sed s/://g`|1309853102|0|1|1|LDCTRL|D|sslvl" http://127.0.0.1:55555/usr/bin/getsrvr
+curl -v -d "datatorecv=sslvl|1|10062|`cat /var/config/system_mac|sed s/://g`|1309853102|0|1|1|OTAMGR|D|sslvl" http://127.0.0.1:55555/usr/bin/getsrvr
+curl -v -d "datatorecv=scfg|1|52720865|`cat /var/config/system_mac|sed s/://g`|1576585550|0|1|52720865|rtme:1#securrct:1|scfg" http://127.0.0.1:55555/usr/bin/getsrvr
+
+
+
+curl -v -d "datatorecv=otareq|1|1|`cat /var/config/system_mac|sed s/://g`|1358550182|0|1|302199|1|0024b10000037f0b|https://172.20.1.129:343/ota/5.3.4.17/nand/|1|1|1|1|otareq" http://127.0.0.1:55555/usr/bin/getsrvr
+
+
+curl -v -d "datatorecv=otareq|1|1|`cat /var/config/system_mac|sed s/://g`|1358550182|0|1|302199|1|`cat /var/config/system_mac|sed s/://g`|https://172.20.1.129:343/ota/4.3.5.93/nand/|1|1|1|1|otareq" http://127.0.0.1:55555/usr/bin/getsrvr
+
+
+curl -v -d "datatorecv=otareq|1|1|`cat /var/config/system_mac|sed s/://g`|1358550182|0|1|302199|1|`cat /var/config/system_mac|sed s/://g`|https://172.21.2.0:343/ota/5.3.4.1/nand/|1|1|1|1|otareq" http://127.0.0.1:55555/usr/bin/getsrvr
+
+
+curl -v -d "datatorecv=otareq|1|1|`cat /var/config/system_mac|sed s/://g`|1358550182|0|1|302199|1|0024b1000001095f|https://172.20.1.129:343/ota/5.3.4.9/nand/|1|1|1|1|otareq" http://127.0.0.1:55555/usr/bin/getsrvr
+
+
+
+curl -v -d "datatorecv=otaabrt|1|1|`cat /var/config/system_mac|sed s/://g`|1358550182|0|1| 302199 |otaabrt" http://127.0.0.1:55555/usr/bin/getsrvr
+
+
+
+curl -sd 'datatorecv=getpreq|1|10072|0024B10000011174|1576048469|2|1|1|voltageCurrent,1|getpreq' http://127.0.0.1:55555/usr/bin/getsrvr
+
+build-1
+192.168.1.217 --> nkumar --> Goyal@nite1234  --> sudo su - release --> provide same password as bild-1
+
+
+
+
+
+
+curl -v -d "datatorecv=lc|3|52684565|`hostname | cut -d _ -f 2`|1550686803|0|2|52684565|1550731037|0|0|0|4|10|0|0|1|lc" http://127.0.0.1:55555/usr/bin/getsrvr
+
+
+
+curl -v -d "datatorecv=lcc|2|51262495|`hostname | cut -d _ -f 2`|1500670970|0|2|51262495|0|0|1|lcc" http://127.0.0.1:55555/usr/bin/getsrvr
+						lcc|2|11755|0024b1000002c5fe|1560157161|0|2|114|0|1|lcc
+					   lcc|2|11755|{self.mac_address}|{self.epoch_time}|{outlet_no}|2|114|0|1|lcc"
+curl -v -d "datatorecv=lcc|2|51262495|`hostname | cut -d _ -f 2`|1500670970|0|2|51262495|0|0|1|lcc" http://127.0.0.1:55555/usr/bin/getsrvr
+
+
+curl -v -d "datatorecv=cktbrkr|1|271|0024b10000037bf6|1421898778|0|1|271|80|80|cktbrkr" http://127.0.0.1:55555/usr/bin/getsrvr
+
+
+
+curl -v -d "datatorecv=saddr|1|3508|`hostname | cut -d _ -f 2`|1549161447|0|1|1549161447|homecharger111-na.chargepoint.com:443/ws-prod/panda/v1|saddr" http://127.0.0.1:55555/usr/bin/getsrvr
+
+
+
+curl -v -d "datatorecv=saddr|1|3508|`hostname | cut -d _ -f 2`|1549161447|0|1|1549161447|homecharger-eu.chargepoint.com:443/ws-prod/panda/v1/|saddr" http://127.0.0.1:55555/usr/bin/getsrvr
+
+
+
+=wss://homecharger.chargepoint.com:443/ws-prod/panda/v1
+
+
+
+4homecharger-na.chargepoint.com
+homecharger-na.chargepoint.com
+about:blank
+wss://homecharger-aws.chargepoint.com/ws-prod/panda/v1
+
+
+
+import os
+os.chdir("/home/nitesh/nitesh/modbus_sim")
+from cphm_modbus_backup_new import CP_modbus_sim
+
+from cphm_modbus import CP_modbus_sim
+obj = CP_modbus_sim()
+- var lvolt = "210"
+
+import os
+os.chdir("/home/nitesh/nitesh/modbus_sim")
+from cphm_modbus import CP_modbus_sim
+obj = CP_modbus_sim()
+
+curl -v -d "datatorecv=dibupd|3|357301321|0024b10000000114|1547851682|2|1|357301321|745591|1,2||aws_emb_02:9_2|0|0|0|dibupd" http://127.0.0.1:55555/usr/bin/getsrvr
+
+
+tail -F /var/log/evsim.log | grep -A 7 -i "slave:1 start_addr:46" &
+tail -F /var/log/evsim.log | grep -A 7 -i "slave:1 start_addr:20" &
+tail -F /var/log/evsim.log | grep -A 7 -i "slave:1 start_addr:15" &
+
+import os
+os.chdir("/home/nitesh/modbus_old_vm/modbus_sim")
+from cphm_modbus import CP_modbus_sim
+obj = CP_modbus_sim()
+obj.get_max_current(1)
+obj.startSession(208,20,1)
+def readConfig_init(file_in):
+    #---------------------------------------------------------------------------#
+    # read initial configuration from file
+    #---------------------------------------------------------------------------#
+    raw_data = read_csv(file_in, delimiter = ',', header = 0, dtype = str)
+    register_add = raw_data['registerNumber'].values.tolist()
+    value = raw_data['value'].values.tolist()
+    dict_main = {}
+    dict_table = []
+    for i in range(len(register_add)):
+        dict_sub = {}
+        dict_sub['regaddress'] = register_add[i]
+        dict_sub['regvalue'] = value[i]
+        dict_main[str(register_add[i])] = value[i]
+        dict_table.append(dict_sub)
+    return dict_main
+
+
+address=homecharger.chargepoint.com, port=443, path=/ws-prod/panda/v1/, host=homecharger.chargepoint.com, origin=origin, protocol=ocpp2.0
+
+
+address=homecharger.chargepoint.com, port=443, path=/ws-prod/panda/v1/, host=homecharger.chargepoint.com, origin=origin, protocol=ocpp2.0
+
+address=homecharger.chargepoint.com, port=443, path=/ws-prod/panda/v1, host=homecharger.chargepoint.com, origin=origin, protocol=ocpp2.0
+p=6700
+p = int(p*10)
+p_hex = hex(int(p)).split('x')[-1]
+p_hex = p_hex.rjust(8, "0")
+first_hex = p_hex[0-4]
+second_hex = p_hex[4-8]
+vi cp2/EVSEsim evse_dev_EVCC2.c
+
+WRkNTg3NmI
+
+
+cp2timer_poll: WARNING: timer poll too long
+2019-03-19 06:00:45.235003 EVSIM: sending chgupd: out:1 sid:715 v:212000 i:0 p:22155 e:1056 init:0 evid:000000000000
+
+US VPN : 12.125.176.58
+route add 172.31.254.0/24 mask 255.255.255.255 10.252.252.6
+route add 192.168.1.0/24 mask 255.255.255.255 10.252.252.6
+route add 172.31.240.0/24 mask 255.255.255.0 10.252.252/getsrvr
+
+
+py.test --capture no --platform cphm400 tests/test_drlc_ct4k.py -k test_drlc_c254
+
+
+
+Panel Sharing Enable
+=======================
+curl -v -d "datatorecv=pnlsc|1|6500|`hostname | cut -d _ -f 2`|1392167248|0|1|1|1||PrimeD-KWatt=1.8,PrimeD-Detection-Delay=1,PrimeD-Adjustment-Delay=1,Noncompliant-Stop-Delay=20|200.0|pnlsc" http://127.0.0.1:55555/usr/bin/getsrvr
+
+
+
+Panel sharing disable
+======================
+curl -v -d "datatorecv=pnlsc|1|6500|`hostname | cut -d _ -f 2`|1392167248|0|1|1|0||PrimeD-KWatt=2.6,PrimeD-Detection-Delay=5,PrimeD-Adjustment-Delay=5,Noncompliant-Stop-Delay=20|200.0|pnlsc" http://127.0.0.1:55555/usr/bin/getsrvr
+
+
+
+NOS send upload sm from this server
+cp-qa-ore-nos-station-comm-server-1
+
+
+
+	/etc/init.d/connectWiFi.sh CTI 1 'Plug-ins.LOVE.ChargePoint!'
+
+
+	largest file in the directory
+
+AA008Y50SL
+AA0092EDSB
+("test_drlc_c232", 2)
+
+
+##########To change current in CPF/CPH
+sevt -g mcp -m 107 -o 1 -b 10
+
+###XML message path
+https://github.com/ChargePoint/emb-ct4k-chaps/blob/83497d13342914b9fe0ab271ac38bac95d3b4873/src/appl/cpsrelay/xmlmsgs.txt
+
+
+
+
+sevt -g RFID -m 87 -o 0 -l 0x00000008158107E05481E6AA00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000106010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010601000000000000000000000000000000000000000000000000
+
+
+
+
+
+sevt -g RFID -m 87 -o 0 -l 0x000000085A8007E070126B2B000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000106010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010601000000000000000000000000000000000000000000000000
+
+
+
+tests/test_drlc.py:474 TestDRLC.test_drlc_c241
+         - tests/test_drlc.py:786 TestDRLC.test_drlc_c254
+         - tests/test_drlc.py:892 TestDRLC.test_drlc_c261
+
+fw_setenv cps_url "https://172.20.1.129:343/ctech/gatewayserver/pgm.php"
+
+
+Prod GW: DNhNDdlYmM
+NGW: Tk0MzEzNGY
+7b25: TcwNjM5NmQ
+New GW: DNhNTFlYWI
+ssh to cp-prod-ore-nos-panda-ota-1.us.prod.chargepoint.local
+
+
+flash_erase /dev/mtd2 0 0
+nandwrite -m -p /dev/mtd2 uImage_nand-v8.0.4.33.bin
+ubiformat /dev/mtd3 -f ubifsnand_rfs-v8.0.4.40.img
+
+curl -v -d "datatorecv=lc|3|51262495|`hostname | cut -d _ -f 2`|1571136854|0|2|51262495|1571392297|2|0|0|3|8|0|0|1|lc" http://127.0.0.1:55555/usr/bin/getsrvr
+
+
+py.test --capture no test_station_enable_disable.py --platform ct4k -k test_station_enable_2935
+
+/Users/nitesh/PycharmProjects/test/firefly/configs/automation/ct4k-000201ee
+## CPHm400 job in jumpbox
+
+/home/release/.jenkins/jobs/cphm400-builds/workspace
+
+git submodule foreach --quiet git log  v8.0.6.15..HEAD --format='%h : %Cblue %ad : %Cgreen %an :%n %Cred %s %+N' --abbrev-commit --date=short
+
+
+
+u|<vers>=18|<msgId>|<stationId>|<timespec>|<outlet>|<msghdrversion>|<sesstag>|<sessId>|<energyinkwh>|<transTime>|<flagFinalSummary>|<endReason>|<trans_start_time>|<trans_end_time>|<temperature>|<chargingTime>|<powerinkw>|<chrgState>|faultState|<SessStartTimeSynced>|<SessEndTimeSynced>|<cardtype>|<sesstag_enc>|PricingVersion|timeOffset|GroupID|PlanID#PlanVersion#PolicyID#PolicyVersion|lineItemVersion|TotalPrice|lineItem1#lineItem2#..LineItem N|CCAuthToken|ReservID|VoilationFee|PrimeDirectiveInd|AuthLatency|FragNum|DataFormatVersion|LastFragment|NumTuples|<tuples-list>|rmsVoltage|rmsCurrent|ActiveChargingTime|ActiveNotChargingTime|ActiveTransientTime|dibId|chgmode|soc|rct|touSchedChrgSessByDblPmp|startWattHour|endWattHour|<convenience_fee>|allowedPower|evID|<numActivePhases><voltageL1>,<currentL1>,<powerfactorL1>#<voltageL2>,<currentL2>,<powerfactorL2>#<voltageL3>,<currentL3>,<powerfactorL3>|u
+
+
+version=v8.0.6.7 some random text
+
+
+PROPERTY_SYNC "mmi_ui_opts" :  QVariant(QString, "diagview:0;techview:0;justcharge:1")
+
+Before subnetting what companies used to do with big IP networks
+What happens if switch forwards the packet to the port it has reveived frame
+
+
+EMBSW-8026 - CP4K: 8.0.6.9: Stop button is missing for Just charge station mode
+
+EMBSW-8011 - CP4K: 8.0.6.9: Dib is not visible on UI
+
+
+Find the correct answer
+x = [1,2,3,4,5,1,2]
+x.pop(2)
+print(x)
+
+A. [1,3,4,5,1,2]
+B. [1,3,4,5,1]
+C. [1,2,4,5,1,2]
+D. [1,2,3,4,5,1,2]
+
+Find the correct answer
+
+x = [1,2,3,4,5,6,7,8,9]
+print(x[2:])
+
+A. [3,4,5,6,7,8,9]
+B. [8,9]
+C. [1,2,3,4,5,6,7]
+D. [1,2]
+
+Find the correct answer
+
+import re
+var = "Hello Chargepoint India"
+match = re.search("Hello \s*(.*)$", var)
+print(match.group(1))
+
+A. Hello Chargepoint India
+B. Chargepoint
+C. India
+D. Chargepoint India
+
+
+
+
+
+
+CP4K: 8.0.6.10: Installation wizard "Test Locking Pins" show unlock for one port only when I have selected one input cable
+
+
+
+####Pandas*********
+
+saddr message
+curl -v -d "datatorecv=saddr|1|3508|0024B1000003701A|1575007871|0|1|1575007871|homecharger.ev-chargepoint.com:443/ws-qa/panda/v1|saddr" http://127.0.0.1:55555/usr/bin/getsrvr
+
+ iptables -I OUTPUT -p all -d 172.21.0.0/19 -j ACCEPT
+ iptables -I INPUT -p all -s 172.21.0.0/19 -j ACCEPT
+
+
+To disable time sync -- Delete file /opt/etc/clksynctime --> reboot
+
+Connecting Production US: ssh nkumar@cp-prod-ore-nos-jumpbox-1.chargepoint.com
+
+Connecting Production US: ssh nkumar@cp-prod-fra-nos-jumpbox-1.chargepoint.com
+
+
+
+
+-98, -99, 99, 99, 99, 49, 98, 98, 98, 99, 98, 98, 99, 99, 99,
+99, 99, 98, 90, 94, 99, 90, 93, 99, 99, 99, 99, 99, 98, 98, 99,
+99, 99, 98, 90, 94, 99, 90, 93, 99, 99, 99, 99, 99, 98, 98, 99,
+99, 99, 98, 90, 94, 99, 90, 93, 99, 99, 99, 99, 99, 98, 98, 99,
+99, 99, 98, 90, 94, 99, 90, 93, 99, 99, 99, 99, 99, 98, 98, 99,
+
+48, 49, 48, 49, 49, 49, 49, 48, 48, 48, 49, 48, 48, 49, 49, 49,
+40, 40, 40, 40, 42, 43, 42, 40, 40, 40, 40, 40, 42, 43, 44, 43,
+40, 40, 40, 40, 42, 43, 42, 40, 40, 40, 40, 40, 42, 43, 44, 43,
+
